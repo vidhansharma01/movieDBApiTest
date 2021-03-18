@@ -2,21 +2,24 @@ package RestAssured;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
+import io.restassured.response.Response;
 import org.testng.Assert;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Properties;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.requestSpecification;
 import static org.hamcrest.Matchers.equalTo;
 
 public class HttpApiTest {
+    private static String key;
     public static void main(String args[]) throws IOException {
         RestAssured.baseURI = "http://api.themoviedb.org/3";
-        String key = init();
+        key = init();
         String response = given().log().all().queryParam("api_key", key).when()
                 .get("movie/590706").then().log().all().assertThat().statusCode(200)
                 .body("original_title", equalTo("Jiu Jitsu"))
@@ -25,7 +28,27 @@ public class HttpApiTest {
         String movieName = jsonPath.getString("original_title");
         System.out.println(movieName);
         Assert.assertEquals(movieName, "Jiu Jitsu");
+        getTopRatedMovies();
+
     }
+    public static void getTopRatedMovies(){
+        RestAssured.baseURI = "http://api.themoviedb.org/3";
+        String response = given().queryParam("api_key", key)
+                .queryParam("language", "en-US")
+                .queryParam("page", "1")
+                .when().get("movie/top_rated").then().assertThat().statusCode(200)
+                .extract().response().asString();
+        JsonPath jsonPath = new JsonPath(response);
+        int size =jsonPath.getInt("results.size()");
+        //String arr = jsonPath.get("results[0].original_title");
+        System.out.println(size);
+        List<String> movieNames = new ArrayList<>();
+        for(int i = 0 ;  i < size; i++){
+            movieNames.add((String) jsonPath.get("results[" + i + "].original_title"));
+            System.out.println(movieNames.get(i));
+        }
+    }
+
     public static String init() throws IOException {
         FileInputStream fs = new FileInputStream("C:\\Users\\Vidhan Chandra\\Downloads\\movieDB\\src\\test\\java\\RestAssured\\Api.properties");
         Properties properties = new Properties();
@@ -33,4 +56,5 @@ public class HttpApiTest {
         String key = properties.getProperty("api_key");
         return key;
     }
+
 }

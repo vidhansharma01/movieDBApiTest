@@ -2,10 +2,8 @@ package RestAssured;
 
 import io.restassured.RestAssured;
 import io.restassured.path.json.JsonPath;
-
-
-import java.security.KeyStore;
-
+import org.testng.annotations.DataProvider;
+import org.testng.annotations.Test;
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.equalTo;
 
@@ -33,5 +31,16 @@ public class AppTest {
             sum += amount;
         }
         System.out.println(sum);
+    }
+    @Test(dataProvider = "movieData")
+    public void getMovie(){
+
+    }
+
+    @DataProvider(name = "movieData")
+    public Object[][] getData(){
+        return new Object[][]{
+                {"edej", "dedefe"}
+        };
     }
 }
