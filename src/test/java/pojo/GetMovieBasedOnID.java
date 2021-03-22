@@ -1,5 +1,7 @@
 package pojo;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -26,18 +28,17 @@ public class GetMovieBasedOnID {
     private double vote_average;
     private int vote_count;
 
-    //Nested Pojos
-    private List<Genre> genres;
+    private List<pojo.Genre> genre;
     private List<ProductionCompanie> production_companies;
     private List<ProductionCountries> production_countries;
     private List<SpokenLanguage> spoken_languages;
 
-    public List<Genre> getGenre() {
-        return genres;
+    public List<pojo.Genre> getGenre() {
+        return genre;
     }
 
-    public void setGenre(List<Genre> genres) {
-        this.genres = new ArrayList<>(genres);
+    public void setGenre(List<pojo.Genre> genre) {
+        this.genre = genre;
     }
 
     public List<ProductionCompanie> getProductionCompanie() {
@@ -45,7 +46,7 @@ public class GetMovieBasedOnID {
     }
 
     public void setProductionCompanie(List<ProductionCompanie> production_companies) {
-        this.production_companies = new ArrayList<>(production_companies);
+        this.production_companies = production_companies;
     }
 
     public List<ProductionCountries> getProductionCountries() {
@@ -53,7 +54,7 @@ public class GetMovieBasedOnID {
     }
 
     public void setProductionCountries(List<ProductionCountries> production_countries) {
-        this.production_countries = new ArrayList<>(production_countries);
+        this.production_countries = production_countries;
     }
 
     public List<SpokenLanguage> getSpokenLanguage() {
@@ -61,7 +62,7 @@ public class GetMovieBasedOnID {
     }
 
     public void setSpokenLanguage(List<SpokenLanguage> spoken_languages) {
-        this.spoken_languages = new ArrayList<>(spoken_languages);
+        this.spoken_languages = spoken_languages;
     }
     //End of nested Pojos
 

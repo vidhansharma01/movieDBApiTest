@@ -1,13 +1,13 @@
 package pojo;
 
 public class PostRating {
-    String rating;
+    double value;
 
-    public String getRating() {
-        return rating;
+    public double getValue() {
+        return value;
     }
 
-    public void setRating(String rating) {
-        this.rating = rating;
+    public void setValue(double value) {
+        this.value = value;
     }
 }

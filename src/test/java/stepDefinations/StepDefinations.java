@@ -6,9 +6,11 @@ import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 
 public class StepDefinations {
+    //RestAssured.baseURI = "https://api.themoviedb.org/3";
+
     @Given("^Movie Id is given$")
     public void movie_id_is_given() throws Throwable {
-        RestAssured.baseURI = "https://api.themoviedb.org/3";
+
 
     }
 
