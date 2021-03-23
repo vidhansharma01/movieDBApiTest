@@ -21,21 +21,28 @@ public class StepDefinations extends Utils {
     Response response;
     RatingDataBuild ratingDataBuild = new RatingDataBuild();
 
+    /*Get movie name based on ID*/
     @Given("^Movie Id is given$")
     public void movie_id_is_given() throws Throwable {
-        reqSpec = given().spec(requestSpecification()).body(ratingDataBuild.addRating());
+        reqSpec = given().spec(requestSpecification());
     }
 
     @When("^User call http GET method$")
     public void user_call_http_get_method() throws Throwable {
-
+        resSpec = new ResponseSpecBuilder().expectStatusCode(200).expectContentType(ContentType.JSON).build();
+        response = reqSpec.when().get("/movie/590706").then().spec(resSpec)
+                .extract().response();
     }
 
     @Then("^The API call is success with status code 200$")
     public void the_api_call_is_success_with_status_code_200() throws Throwable {
-
+        Assert.assertEquals(response.statusCode(), 200);
     }
-
+    /*Rate a movie*/
+    @Given("^Movie Id is given along with rating$")
+    public void movie_id_is_given_along_with_rating() throws Throwable {
+        reqSpec = given().spec(requestSpecification().queryParam("guest_session_id", getSessionId())).body(ratingDataBuild.addRating());
+    }
     @When("^User call http POST method$")
     public void user_call_http_post_method() throws Throwable {
         resSpec = new ResponseSpecBuilder().expectStatusCode(201).expectContentType(ContentType.JSON).build();
@@ -48,8 +55,4 @@ public class StepDefinations extends Utils {
         Assert.assertEquals(response.statusCode(), 201);
     }
 
-    @Given("^Resource Url is given$")
-    public void resource_url_is_given() throws Throwable {
-
-    }
 }
