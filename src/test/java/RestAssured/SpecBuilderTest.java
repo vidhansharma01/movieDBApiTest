@@ -23,7 +23,7 @@ public class SpecBuilderTest {
         key = init();
         RequestSpecification requestSpecification = new RequestSpecBuilder().setBaseUri("http://api.themoviedb.org/3")
                 .addQueryParam("api_key", key)
-                .addQueryParam("guest_session_id", "5aa829db2aca61e5a42d9e5bb9af99ad")
+                .addQueryParam("guest_session_id", "031c4b2be90cd5936f739f4833b2097f")
         .setContentType(ContentType.JSON).build();
 
         ResponseSpecification responseSpecification = new ResponseSpecBuilder().expectStatusCode(201)
@@ -34,6 +34,8 @@ public class SpecBuilderTest {
                 .extract().response();
         String responseString=response.asString();
         System.out.println(responseString);
+
+
     }
     public static String init() throws IOException {
         FileInputStream fs = new FileInputStream("C:\\Users\\Vidhan Chandra\\Downloads\\movieDB\\src\\test\\java\\RestAssured\\Api.properties");

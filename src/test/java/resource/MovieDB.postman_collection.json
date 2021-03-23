@@ -1,0 +1,194 @@
+{
+	"info": {
+		"_postman_id": "df9d252e-fc3b-420d-bb80-2fc4c14f058f",
+		"name": "MovieDB",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Add rating",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"value\": 8.5\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.themoviedb.org/3/movie/590706/rating?api_key=6e6bc4c62b7127d76ab425e59a75943a&guest_session_id=a34ee89b5fd9475bdc167b1b724f4f82",
+					"protocol": "http",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"590706",
+						"rating"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "6e6bc4c62b7127d76ab425e59a75943a"
+						},
+						{
+							"key": "guest_session_id",
+							"value": "a34ee89b5fd9475bdc167b1b724f4f82"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Movie Based on ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.themoviedb.org/3/movie/590706?api_key=6e6bc4c62b7127d76ab425e59a75943a",
+					"protocol": "http",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"590706"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "6e6bc4c62b7127d76ab425e59a75943a"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get TV series By ID",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://api.themoviedb.org/3/tv/60735?api_key=6e6bc4c62b7127d76ab425e59a75943a&language=en-US",
+					"protocol": "http",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"tv",
+						"60735"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "6e6bc4c62b7127d76ab425e59a75943a"
+						},
+						{
+							"key": "language",
+							"value": "en-US"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get highly Rated movies",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://api.themoviedb.org/3/movie/top_rated?api_key=6e6bc4c62b7127d76ab425e59a75943a&language=en-US&page=1",
+					"protocol": "https",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"movie",
+						"top_rated"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "6e6bc4c62b7127d76ab425e59a75943a"
+						},
+						{
+							"key": "language",
+							"value": "en-US"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Get Guest Session ID to Rate Movies",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://api.themoviedb.org/3/authentication/guest_session/new?api_key=6e6bc4c62b7127d76ab425e59a75943a",
+					"protocol": "http",
+					"host": [
+						"api",
+						"themoviedb",
+						"org"
+					],
+					"path": [
+						"3",
+						"authentication",
+						"guest_session",
+						"new"
+					],
+					"query": [
+						{
+							"key": "api_key",
+							"value": "6e6bc4c62b7127d76ab425e59a75943a"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}

@@ -1,15 +1,13 @@
 package pojo;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
-import java.util.ArrayList;
 import java.util.List;
 
 public class GetMovieBasedOnID {
-    private boolean adult;
+    private String adult;
     private String backdrop_path;
     private String belongs_to_collection;
     private long budget;
+    private List<genres> genres;
     private String homepage;
     private long id;
     private String imdb_id;
@@ -27,18 +25,16 @@ public class GetMovieBasedOnID {
     private boolean video;
     private double vote_average;
     private int vote_count;
-
-    private List<pojo.Genre> genre;
     private List<ProductionCompanie> production_companies;
     private List<ProductionCountries> production_countries;
     private List<SpokenLanguage> spoken_languages;
 
-    public List<pojo.Genre> getGenre() {
-        return genre;
+    public List<genres> getGenre() {
+        return genres;
     }
 
-    public void setGenre(List<pojo.Genre> genre) {
-        this.genre = genre;
+    public void setGenre(List<genres> genres) {
+        this.genres = genres;
     }
 
     public List<ProductionCompanie> getProductionCompanie() {
@@ -66,11 +62,11 @@ public class GetMovieBasedOnID {
     }
     //End of nested Pojos
 
-    public boolean isAdult() {
+    public String isAdult() {
         return adult;
     }
 
-    public void setAdult(boolean adult) {
+    public void setAdult(String adult) {
         this.adult = adult;
     }
 

@@ -1,14 +1,14 @@
 package pojo;
 
-public class Genre {
-    String id;
+public class genres {
+    int id;
     String name;
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 

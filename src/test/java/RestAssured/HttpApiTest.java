@@ -8,7 +8,6 @@ import org.testng.Assert;
 import pojo.GetMovieBasedOnID;
 
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
@@ -64,7 +63,6 @@ public class HttpApiTest {
             System.out.println(movieNames.get(i));
         }
     }
-
     public static String init() throws IOException {
         FileInputStream fs = new FileInputStream("C:\\Users\\Vidhan Chandra\\Downloads\\movieDB\\src\\test\\java\\RestAssured\\Api.properties");
         Properties properties = new Properties();
